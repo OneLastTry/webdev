@@ -1,0 +1,12 @@
+{
+	"folders": [
+		{
+			"name": "main",
+			"path": "."
+		},
+		{
+			"name": "angular-tour-of-heroes",
+			"path": "code/apps/angular-tour-of-heroes"
+		}
+	]
+}

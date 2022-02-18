@@ -1,0 +1,22 @@
+version: '3.9'
+services:
+  webdev:
+    image: training/webdev/node:base
+    hostname: webdev-node
+    container_name: webdev-node
+    build:
+      context: .
+      dockerfile: Dockerfile.node
+    environment:
+      - APPNAME=angular-tour-of-heroes
+    ports:
+    - "4200:4200"
+    - "9876:9876"
+    restart: on-failure
+    volumes:
+    - type: bind
+      source: ./shared
+      target: /shared
+    - type: bind
+      source: ./code/apps/angular-tour-of-heroes
+      target: /code/apps/angular-tour-of-heroes

@@ -1,0 +1,14 @@
+FROM node:12
+
+EXPOSE 4200 9876
+ENV NPM_CONFIG_PREFIX=/home/node/.npm-global
+WORKDIR /home/node/
+ADD ./startup.sh /code/apps/startup.sh
+RUN chmod u+x /code/apps/startup.sh
+RUN npm install @angular/cli
+RUN echo "alias ng='/home/node/node_modules/.bin/ng'" >> ~/.bashrc
+RUN . ~/.bashrc
+RUN printf '#!/bin/bash \n /home/node/node_modules/.bin/ng $@' > /usr/bin/ng
+RUN chmod +x /usr/bin/ng
+WORKDIR /code/apps
+ENTRYPOINT ["/code/apps/startup.sh"]
