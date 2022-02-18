@@ -17,7 +17,7 @@ docker-compose build
 ### Start
 
 ```bash
-docker-compose start
+docker-compose up -d
 ```
 
 ### Stop
